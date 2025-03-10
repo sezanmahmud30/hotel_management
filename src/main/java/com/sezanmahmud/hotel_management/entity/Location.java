@@ -9,7 +9,7 @@ public class Location {
     @Id
     private int id;
 
-    private String Name;
+    private String name;
     private String image;
 
     public Location() {
@@ -17,7 +17,7 @@ public class Location {
 
     public Location(int id, String name, String image) {
         this.id = id;
-        Name = name;
+        name = name;
         this.image = image;
     }
 
@@ -30,11 +30,11 @@ public class Location {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getImage() {
