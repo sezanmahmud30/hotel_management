@@ -1,15 +1,20 @@
 package com.sezanmahmud.hotel_management.restcontroller;
 
+import com.sezanmahmud.hotel_management.entity.Hotel;
+import com.sezanmahmud.hotel_management.entity.Location;
+import com.sezanmahmud.hotel_management.service.HotelService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sezanmahmud.hotel_management.entity.Hotel;
-import com.sezanmahmud.hotel_management.service.HotelService;
+
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,7 +24,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/hotel")
 public class HotelController {
-
     @Autowired
     private HotelService hotelService;
 
@@ -33,7 +37,7 @@ public class HotelController {
     @PostMapping("/save")
     public ResponseEntity<Map<String,String>> saveHotel(
             @RequestPart(value = "hotel") String hotelJson,
-            @RequestParam(value = "image") MultipartFile file
+            @RequestParam(value = "image")MultipartFile file
     ) throws JsonProcessingException {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -97,6 +101,5 @@ public class HotelController {
         Hotel updatedHotel = hotelService.updateHotel(id, hotel, file);
         return ResponseEntity.ok(updatedHotel);
     }
-
 
 }

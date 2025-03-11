@@ -19,6 +19,7 @@ import java.util.UUID;
 
 @Service
 public class HotelService {
+
     @Autowired
     private HotelRepository hotelRepository;
 
@@ -111,4 +112,5 @@ public class HotelService {
         Files.copy(file.getInputStream(),filePath);
         return fileName;
     }
+
 }
