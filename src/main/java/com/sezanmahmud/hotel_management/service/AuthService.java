@@ -102,8 +102,10 @@ public class AuthService {
         );
 
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+
         // Generate token for  current user
         String jwt = jwtService.generateToken(user);
+
         //Remove all existing token for this user
         removeAllTokenByUser(user);
 
@@ -120,7 +122,7 @@ public class AuthService {
         if (user != null){
             user.setActive(true);
             userRepository.save(user);
-            return "User added successfully!";
+            return "User Activated successfully!";
         }else {
             return "Invalid Activation token!";
         }
